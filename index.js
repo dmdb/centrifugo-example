@@ -5,7 +5,7 @@ const config = require('./config.json');
 
 const app = express();
 const port = 3000;
-app.use(express.json()); 
+app.use(express.json());
 
 const centrifugeApi = axios.create({
   baseURL: `http://localhost:8000/api`,
@@ -34,16 +34,20 @@ app.post('/subscribe', async (req, res) => {
   }
 });
 
-setInterval(() => {
-  centrifugeApi.post('', {
-    method: 'publish',
-    params: {
-      channel: 'test_channel',
-      data: {
-        text: 'tick',
+setInterval(async () => {
+  try {
+    await centrifugeApi.post('', {
+      method: 'publish',
+      params: {
+        channel: 'test_channel',
+        data: {
+          text: 'tick',
+        },
       },
-    },
-  });
+    });
+  } catch (e) {
+    console.error(e.message);
+  }
 }, 1000);
 
 app.listen(port, () => {
