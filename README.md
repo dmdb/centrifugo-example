@@ -15,10 +15,10 @@ Backend does:
 index.html workflow:
 1. Retrieves a token from backend
 2. Connects to centrifugo
-3. Asks backend for server-side subscription
+3. Asks backend for a server-side subscription
 4. Defines event listener to console.log payloads on server-side 'publish' event as it stated in official repo
 https://github.com/centrifugal/centrifuge-js#server-side-subscriptions
 
-Then you can on http://localhost:3000 to look at server-side publications at the console
+Then you can open in browser http://localhost:3000 to look at server-side publications at the console
 
-By default centrifugo runs on port 8000 and backend on port 3000
+By default centrifugo runs on port 8000 and Node API backend on port 3000
